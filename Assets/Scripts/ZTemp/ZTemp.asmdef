@@ -1,0 +1,17 @@
+{
+    "name": "ZTemp",
+    "references": [
+        "GUID:a5850ceff5bf55f4393b208e32fff49a",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:0f9a9afa8a56c984abe4b1e83c9666be"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

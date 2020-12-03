@@ -1,0 +1,386 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3571651747671942241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e834e3d6e383246b298f13a4b2ee0b, type: 3}
+  m_Name: Behavior End
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 399, y: 82.5}
+  ports:
+    keys:
+    - Enter
+    values:
+    - _fieldName: Enter
+      _node: {fileID: -3571651747671942241}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Enter: 0
+--- !u!114 &-2787246647393887275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507248e8a8b87814e820dc20c76ee799, type: 3}
+  m_Name: Enums Node_Prop Type
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -585.1, y: 82.7}
+  ports:
+    keys:
+    - Next
+    values:
+    - _fieldName: Next
+      _node: {fileID: -2787246647393887275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Val_2
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  ValueList: 0000000001000000
+--- !u!114 &-1192810098619377417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a3ec17e85bf96418ad51e53aa057a1, type: 3}
+  m_Name: Get Data
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -579.1, y: -71.899994}
+  ports:
+    keys:
+    - Next
+    - Val_0
+    values:
+    - _fieldName: Next
+      _node: {fileID: -1192810098619377417}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Val_1
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Val_0
+      _node: {fileID: -1192810098619377417}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: 6016373344976427890}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  Val_0: 0
+--- !u!114 &-120879393123147165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee9414f9c7bcdb4583cffdb56eed620, type: 3}
+  m_Name: Get Buff Handle
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -570, y: -209.5}
+  ports:
+    keys:
+    - Next
+    - Enter
+    values:
+    - _fieldName: Next
+      _node: {fileID: -120879393123147165}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Val_0
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Enter
+      _node: {fileID: -120879393123147165}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  Enter: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2151af45257d3f4e8f9cf61a397fd9c, type: 3}
+  m_Name: "buff\u7684\u79FB\u9664\u6D4B\u8BD5"
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -120879393123147165}
+  - {fileID: 2933151283156233275}
+  - {fileID: -2787246647393887275}
+  - {fileID: -1192810098619377417}
+  - {fileID: 6016373344976427890}
+  - {fileID: 8011636846281795259}
+  - {fileID: -3571651747671942241}
+--- !u!114 &2933151283156233275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01e6f5ecfc550c42bd90ecb292545ee, type: 3}
+  m_Name: Remove Monster Buff
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6.9601974, y: 57.067196}
+  ports:
+    keys:
+    - Next
+    - Val_0
+    - Val_1
+    - Val_2
+    - Enter
+    values:
+    - _fieldName: Next
+      _node: {fileID: 2933151283156233275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Enter
+        node: {fileID: -3571651747671942241}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Val_0
+      _node: {fileID: 2933151283156233275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: -120879393123147165}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Val_1
+      _node: {fileID: 2933151283156233275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: -1192810098619377417}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Val_2
+      _node: {fileID: 2933151283156233275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: -2787246647393887275}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Enter
+      _node: {fileID: 2933151283156233275}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: 8011636846281795259}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  Val_0: 0
+  Val_1: 0
+  Val_2: 0
+  Enter: 0
+--- !u!114 &5133265233444040486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27590a07c718f2f4b8164312d92f3748, type: 3}
+  m_Name: L Behavior End
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 260, y: -138.5}
+  ports:
+    keys:
+    - Enter
+    values:
+    - _fieldName: Enter
+      _node: {fileID: 5133265233444040486}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Next
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Enter: 0
+--- !u!114 &6016373344976427890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f1e66ed13659b4bb5ecc0db73a58c4, type: 3}
+  m_Name: Single Data Type
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -894, y: -67.5}
+  ports:
+    keys:
+    - Next
+    values:
+    - _fieldName: Next
+      _node: {fileID: 6016373344976427890}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Val_0
+        node: {fileID: -1192810098619377417}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  Value: 1
+--- !u!114 &6233122450361282591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6594732e5d50adf46beec22d4e600277, type: 3}
+  m_Name: Enum Node_Prop Type
+  m_EditorClassIdentifier: 
+  m_desc: "\u5C5E\u6027\u79CD\u7C7B\u96C6\u5408\u8282\u70B9"
+  graph: {fileID: 11400000}
+  position: {x: -606, y: 61.5}
+  ports:
+    keys:
+    - Next
+    values:
+    - _fieldName: Next
+      _node: {fileID: 6233122450361282591}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Val_2
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
+  ValueList: 00000000
+--- !u!114 &8011636846281795259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6773946bb1d4ae0408c48d9b12d3e969, type: 3}
+  m_Name: Behavior Start
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -524, y: 295.5}
+  ports:
+    keys:
+    - Next
+    values:
+    - _fieldName: Next
+      _node: {fileID: 8011636846281795259}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Enter
+        node: {fileID: 2933151283156233275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  Next: 0
