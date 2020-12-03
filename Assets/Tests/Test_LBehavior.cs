@@ -111,7 +111,6 @@ namespace Tests
             {
                 if(effect.IsFillCondition(playerID, cardHandle))
                 {
-                    Debug.Log("满足条件");
                     await effect.ExecuteCodes_Cost_Chose(playerID, cardHandle);
                     await effect.ExecuteCodes_Body(playerID, cardHandle);
                 }
