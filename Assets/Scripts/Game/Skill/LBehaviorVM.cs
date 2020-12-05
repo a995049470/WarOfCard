@@ -5,6 +5,7 @@ using Battle;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Battle.Event;
+using Game.Common;
 
 namespace LSkill
 {

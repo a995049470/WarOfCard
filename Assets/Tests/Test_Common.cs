@@ -6,11 +6,35 @@ using System.Collections;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Battle.Event;
+using Game.Common;
+using LitJson;
+using SQLite4Unity3d;
+using System;
 
 namespace Tests
 {
     public class Test_Common
     {
+        // [Test]
+        // public void Test_Pro()
+        // {
+        //     Type t = typeof(texx);
+        //     var ps = t.GetProperties();
+        //     foreach (var p in ps)
+        //     {
+        //         Debug.Log(p.Name + "  " + p.PropertyType);
+        //     }
+        // }
+        // [Test]
+        // public void Test_Json()
+        // {
+        //     int[] nums = new int[] { 1, 2, 3, 4, 5, 6};
+        //     var json = JsonMapper.ToJson(nums);
+        //     //Debug.Log(json);   
+        // }
+
+        
+
         [Test]
         public void Test_IntArray()
         {

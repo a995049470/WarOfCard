@@ -5,7 +5,8 @@
         "UnityEditor.TestRunner",
         "Game",
         "ZTemp",
-        "UniTask"
+        "UniTask",
+        "Git"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

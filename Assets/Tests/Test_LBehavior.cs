@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using LSkill;
 using Config;
 using Battle.Event;
+using Game.Common;
 
 namespace Tests
 {

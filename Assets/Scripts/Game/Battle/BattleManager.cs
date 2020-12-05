@@ -4,6 +4,7 @@ using LPTC;
 using LNet;
 using LSkill;
 using Battle.Event;
+using Game.Common;
 
 namespace Battle
 {

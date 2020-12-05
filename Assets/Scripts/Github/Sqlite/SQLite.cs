@@ -382,6 +382,15 @@ namespace SQLite4Unity3d
 
 			return Execute (query);
 		}
+
+		public int DropTable(Type t)
+		{
+			var map = GetMapping (t);
+
+			var query = string.Format("drop table if exists \"{0}\"", map.TableName);
+
+			return Execute (query);
+		}
 		
 		/// <summary>
 		/// Executes a "create table if not exists" on the database. It also
@@ -2002,16 +2011,10 @@ namespace SQLite4Unity3d
             {
                 return "varchar(36)";
             }
-			else if(clrType.IsArray || typeof(IList).IsAssignableFrom(clrType))
-			{
-				int? len = p.MaxStringLength;
-
-                if (len.HasValue)
-                    return "varchar(" + len.Value + ")";
-
-                return "varchar";
-			}
-			else if(typeof(IKey).IsAssignableFrom(clrType))
+			//扩展数据类型
+			else if(clrType.IsArray || 
+			typeof(IList).IsAssignableFrom(clrType) || 
+			typeof(IKey).IsAssignableFrom(clrType))
 			{
 				int? len = p.MaxStringLength;
 
@@ -2351,12 +2354,7 @@ namespace SQLite4Unity3d
                 {
                     SQLite3.BindText(stmt, index, ((Guid)value).ToString(), 72, NegativePointer);
                 }
-				else if(value is IList || value is Array)
-				{
-					var json = LitJson.JsonMapper.ToJson(value);
-					SQLite3.BindText(stmt, index, json, -1, NegativePointer);
-				}
-				else if(value is IKey)
+				else if(value is IList || value is Array || value is IKey)
 				{
 					var json = LitJson.JsonMapper.ToJson(value);
 					SQLite3.BindText(stmt, index, json, -1, NegativePointer);
@@ -2470,12 +2468,10 @@ namespace SQLite4Unity3d
                     var text = SQLite3.ColumnString(stmt, index);
                     return new Guid(text);
                 }
-				else if(clrType.IsArray || typeof(IList).IsAssignableFrom(clrType))
-				{
-					var json = SQLite3.ColumnString(stmt, index);
-					return LitJson.JsonMapper.ToObject(json, clrType);
-				}
-				else if(typeof(IKey).IsAssignableFrom(clrType))
+				//扩展数据类型
+				else if(clrType.IsArray || 
+				typeof(IList).IsAssignableFrom(clrType) || 
+				typeof(IKey).IsAssignableFrom(clrType))
 				{
 					var json = SQLite3.ColumnString(stmt, index);
 					return LitJson.JsonMapper.ToObject(json, clrType);

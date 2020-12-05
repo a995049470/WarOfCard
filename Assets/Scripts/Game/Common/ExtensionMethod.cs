@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public static class ExtensionMethod 
+namespace Game.Common
+{
+    public static class ExtensionMethod 
 {
     public static int[] ToIntArray(this Vector2Int v2)
     {
@@ -80,3 +82,6 @@ public static class ExtensionMethod
         HandleManager<T>.Instance.Free(value);
     }
 }
+
+}
+
