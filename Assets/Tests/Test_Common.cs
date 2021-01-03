@@ -33,7 +33,40 @@ namespace Tests
         //     //Debug.Log(json);   
         // }
 
+        public class A
+        {
+            public int value;
+        }
+        A a2 = new A();
+
+        public void SetList(List<int> list)
+        {
+            if(list == null)
+            {
+                list = new List<int>();
+            }
+        }
+        public void SetA(A a)
+        {
+            if(a == null)
+            {
+                a = a2;
+            }
+        }
+
+
         
+
+        [Test]
+        public void TestA()
+        {
+            A a1 = null;
+            List<int> list = null;
+            SetA(a1);
+            SetList(list);
+            Debug.Log($"a1:{a1 == null}");
+            Debug.Log($"list:{list == null}");
+        }
 
         [Test]
         public void Test_IntArray()

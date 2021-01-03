@@ -6,6 +6,25 @@ using UnityEngine;
 
 namespace Game.Cmd
 {
+    [Cmd]
+    public class TempCmd
+    {
+        [Cmd]
+        private static void TestString(string value)
+        {
+            Debug.Log("String : " + value);
+        }
+        [Cmd]
+        private static void TestFloat(string value)
+        {
+            Debug.Log("Float :" + value);
+        }
+        [Cmd]
+        private static void TestEmpty()
+        {
+            Debug.Log("Empty");
+        }
+    }
 
     public class CmdManager : Single<CmdManager>
     {
@@ -36,7 +55,12 @@ namespace Game.Cmd
                 }
             }
         }
-
+        /// <summary>
+        /// 是否包含字段
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="part"></param>
+        /// <returns></returns>
         private bool IsContainStr(string key, string part)
         {
             if(string.IsNullOrEmpty(part))
@@ -65,10 +89,14 @@ namespace Game.Cmd
         /// </summary>
         /// <param name="partCmd"></param>
         /// <returns></returns>
-        private List<MethodInfo> GetMethodList(string partCmd)
+        public List<MethodInfo> GetMethodList(string partCmd)
         {
             List<MethodInfo> res = new List<MethodInfo>();
-            string part = partCmd.Split(' ')[0];
+            if(string.IsNullOrEmpty(partCmd))
+            {
+                return res;
+            }
+            string part = partCmd.Split(' ')[0].ToLower();
             foreach (var kvp in m_methodDic)
             {
                 if(IsContainStr(kvp.Key, part))
@@ -76,7 +104,6 @@ namespace Game.Cmd
                     res.Add(kvp.Value);
                 }
             }
-
             return res;
         }
 
@@ -91,7 +118,7 @@ namespace Game.Cmd
                 Debug.LogError($"{info.Name} 不是静态方法");
                 return;
             }
-            string key = info.Name;
+            string key = info.Name.ToLower();
             m_methodDic[key] = info;
         }
 
@@ -99,10 +126,10 @@ namespace Game.Cmd
         /// 执行命令
         /// </summary>
         /// <param name="cmd"></param>
-        private void ExcuteMethod(string cmd)
+        public void ExcuteMethod(string cmd)
         {
             var res = cmd.Split(' ');
-            var key = res[0];
+            var key = res[0].ToLower();
             var args = new string[res.Length - 1];
             
             //参数赋值
@@ -111,9 +138,19 @@ namespace Game.Cmd
                 args[i] = res[i + 1];
             }   
 
+
             if(m_methodDic.ContainsKey(key))
             {
-                m_methodDic[key].Invoke(null, args);
+                var m = m_methodDic[key];
+                if(m.GetParameters().Length != args.Length)
+                {
+                    Debug.Log($"参数错误");
+                }
+                m.Invoke(null, args);
+            }
+            else
+            {
+                Debug.Log($"方法名输入错误");
             }
         }
     }
