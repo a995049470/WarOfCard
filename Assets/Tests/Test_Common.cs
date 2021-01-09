@@ -53,8 +53,12 @@ namespace Tests
                 a = a2;
             }
         }
-
-
+        [Test]
+        public void TestColor()
+        {
+            Color c = Color.green;
+            Assert.AreEqual(c.ToHeaxColor(), "00ff00");
+        }
         
 
         [Test]
@@ -64,8 +68,8 @@ namespace Tests
             List<int> list = null;
             SetA(a1);
             SetList(list);
-            Debug.Log($"a1:{a1 == null}");
-            Debug.Log($"list:{list == null}");
+            // Debug.Log($"a1:{a1 == null}");
+            // Debug.Log($"list:{list == null}");
         }
 
         [Test]

@@ -10,7 +10,6 @@ public class GameManager : SingleMono<GameManager>
     private void Start()
     {
         CmdStart();
-        CmdStart();
     }
 
     private void Update()

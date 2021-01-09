@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Game.Cmd;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Common;
+using UnityEngine.EventSystems;
 
 namespace Game.Windows
 {
@@ -13,6 +15,7 @@ namespace Game.Windows
             CmdChange,//String
             EscDown,
             EnterDown,
+            SpcaeDown,
         }
 
 
@@ -84,7 +87,17 @@ namespace Game.Windows
                 }
                 content += ")\n";
             }
+
             m_tipText.text = content;
+            if(list.Count > 0)
+            {
+                var isSpaceDown = value[value.Length - 1] == ' ' && value.SameCharCount(' ') == 1;
+                if(isSpaceDown && list.Count > 0)
+                {
+                    m_cmdInput.text = list[0].Name + ' ';
+                    m_cmdInput.caretPosition = m_cmdInput.text.Length;
+                }
+            }
         }
 
         private void EscDown()
@@ -102,9 +115,11 @@ namespace Game.Windows
     
         private void EnterDown()
         {
-            
             CmdManager.Instance.ExcuteMethod(m_cmdInput.text);
+            m_cmdInput.text = "";
+            m_cmdInput.ActivateInputField();
         }
+
 
     }
 }

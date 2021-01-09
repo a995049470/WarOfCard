@@ -48,7 +48,7 @@ public class T1 : MonoBehaviour
     {
         NetworkManager.Instance.Agent.User.C2S_Send(new LPTC.C2C_Talk()
         {
-            id = BattleManager.Instance.SelfIndex,
+            id = BattleManager.Instance.GetSelfIndex(),
             talk = Filed.text,
         });
     }
@@ -58,12 +58,12 @@ public class T1 : MonoBehaviour
     [ContextMenu("Build")]
     public void Build()
     {
-        NetworkManager.Instance.Send_C2S_BuildRoom();
+        NetworkManager.Instance.Agent.Send_C2S_BuildRoom();
     }
 
     public void Link()
     {
-        NetworkManager.Instance.Send_C2S_StartLinkRoom();
+        NetworkManager.Instance.Agent.Send_C2S_StartLinkRoom();
     }
 
 

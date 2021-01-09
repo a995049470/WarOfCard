@@ -27,7 +27,10 @@ namespace Game.Windows
         public void CreateWindow<T>() where T : Window, new()
         {
             string key = nameof(T);
-            m_windowDic[key] = new T();
+            if(!m_windowDic.ContainsKey(key))
+            {
+                m_windowDic[key] = new T();
+            }
         }
         
     }

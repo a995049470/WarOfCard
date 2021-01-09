@@ -23,6 +23,10 @@ namespace LNet
         private List<Received> m_receivedList;
         private ClinetServerModel m_model;
         public IPEndPoint ReceiveIP;
+        /// <summary>
+        /// 服务器IP
+        /// </summary>
+        private IPEndPoint m_serverIp;
         
         
         public ClientServer(IPEndPoint ip)
@@ -32,7 +36,17 @@ namespace LNet
             Listener = new UdpListener(ip);
             Handle = new LPTCHandle();
             m_model = new ClinetServerModel(this);
+            m_serverIp = ip;
         }
+
+        /// <summary>
+        /// 获取远程IP
+        /// </summary>
+        public IPEndPoint GetRemoteIP()
+        {
+            return m_serverIp;
+        }
+
         
         public void Update()
         {
@@ -66,7 +80,7 @@ namespace LNet
             m_state = ClientServerState.Run;
             m_task = Task.Run(async ()=>
             {
-                while (true)
+                while (m_state == ClientServerState.Run)
                 {
                     var received = await Listener.Receive();
                     m_receivedList.Add(received);

@@ -4,27 +4,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
+
+
 namespace Game.Cmd
 {
-    [Cmd]
-    public class TempCmd
-    {
-        [Cmd]
-        private static void TestString(string value)
-        {
-            Debug.Log("String : " + value);
-        }
-        [Cmd]
-        private static void TestFloat(string value)
-        {
-            Debug.Log("Float :" + value);
-        }
-        [Cmd]
-        private static void TestEmpty()
-        {
-            Debug.Log("Empty");
-        }
-    }
 
     public class CmdManager : Single<CmdManager>
     {
@@ -128,7 +111,7 @@ namespace Game.Cmd
         /// <param name="cmd"></param>
         public void ExcuteMethod(string cmd)
         {
-            var res = cmd.Split(' ');
+            var res = cmd.Trim().Split(' ');
             var key = res[0].ToLower();
             var args = new string[res.Length - 1];
             

@@ -25,6 +25,7 @@ namespace LNet
         private List<Received> m_receivedList;
         private bool m_isReceive;
         private CancellationTokenSource m_cts;
+        
 
         public UdpAgent()
         {
@@ -33,7 +34,8 @@ namespace LNet
             m_isReceive = true;
             m_cts = new CancellationTokenSource();
             Handle = new LPTCHandle();
-            ConenteToCloud();
+            //ConenteToCloud();
+            AddListeners();
         }
 
         public void Update()
@@ -65,7 +67,6 @@ namespace LNet
             m_isReceive = true;
             m_connectType = ConnectType.Cloud;
             User = UdpUser.ConnectToServer();
-
             m_cloudTask = m_cloudTask ?? Task.Run(async ()=>
             {
                 while (true)
@@ -98,20 +99,47 @@ namespace LNet
             });
         }
 
+        public void AddListeners()
+        {
+            Handle.AddListener(Handle_S2C_RoomIP);
+        }
+
+
         public void ClearClinet()
         {
-            //m_isReceive = false;
-            // if(m_task != null)
-            // {
-            //     //m_ctoken.ThrowIfCancellationRequested();
-            //     m_cts.Cancel();
-            //     //m_task?.Wait();
-            //     //m_task?.Dispose();
-            //     m_task = null;
-            // }
             m_receivedList.Clear();
             User?.Dispose();
             User = null;
+        }
+
+        public void Send_C2S_BuildRoom()
+        {
+            var sip = NetworkManager.Instance.Server.GetRemoteIP();
+            Send(new C2S_BuildRoom()
+            {
+                address = sip.Address.GetAddressBytes(),
+                port = sip.Port,
+            });
+            ConenteToClinetServer(sip);
+            Send(new C2S_LinkRoom());
+        }
+
+        public void Send_C2S_StartLinkRoom()
+        {
+            Send(new C2S_StartLinkRoom());
+        }
+
+        public void Handle_S2C_RoomIP(S2C_RoomIP value)
+        {
+            var sip = new IPEndPoint(new IPAddress(value.address), value.port);
+            ConenteToClinetServer(sip);
+            Send(new C2S_LinkRoom());
+        }
+
+        public void Send<T>(T value) where T : IToBytes
+        {
+            User.C2S_Send(value);
+            UnityEngine.Debug.Log($"本地 :{User.GetLocalEndPoint()} 发送: {typeof(T).ToString()} 接收: {User.GetRemoteEndPoint()}");
         }
     }
 

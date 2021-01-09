@@ -6,6 +6,9 @@ namespace LNet
     public class ClinetServerModel
     {
         private IPEndPoint[] m_playerIPs;
+        /// <summary>
+        /// 用位来表示 是否有人链接
+        /// </summary>
         private int m_state;
         private ClientServer m_server;
         public ClinetServerModel(ClientServer server)
@@ -27,7 +30,10 @@ namespace LNet
             UnityEngine.Debug.Log($"ClientServer 发送 {typeof(T).ToString()} 到 {ip}");
             m_server.Listener.S2C_Send(ip, value);
         } 
-
+        /// <summary>
+        /// 处理链接协议
+        /// </summary>
+        /// <param name="value"></param>
         private void Handle_C2S_LinkRoom(C2S_LinkRoom value)
         {
             int index = -1;
@@ -47,12 +53,20 @@ namespace LNet
         }
 
         
-
+        /// <summary>
+        /// 处理交谈协议
+        /// </summary>
+        /// <param name="value"></param>
         private void Handle_C2CTalk(C2C_Talk value)
         {
             Borad(value);
         }
 
+        /// <summary>
+        /// 向所有成员广播数据
+        /// </summary>
+        /// <param name="value"></param>
+        /// <typeparam name="T"></typeparam>
         private void Borad<T>(T value) where T : IToBytes
         {
             for (int i = 0; i < m_playerIPs.Length; i++)
@@ -66,6 +80,12 @@ namespace LNet
             }
         }
 
+        /// <summary>
+        /// 添加一个成员
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool TryAddPlayerIP(IPEndPoint ip, ref int id)
         {
             bool isAdd = false;

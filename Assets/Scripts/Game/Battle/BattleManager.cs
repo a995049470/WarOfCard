@@ -14,7 +14,7 @@ namespace Battle
         private const int c_defaultHp = 8000;
 
         ///<summary>本机操作的玩家ID</summay>
-        public int SelfIndex;
+        private int m_selfIndex;
         private PlayerModel[] m_playerModels;
         public GroundModel BattleGroundModel;
         public TimePointModel BattleTimePointModel;
@@ -36,7 +36,7 @@ namespace Battle
             BattleTimePointModel = new TimePointModel();
             VM = new LBehaviorVM();
             EStation = new EventStation();
-            SelfIndex = -1;
+            m_selfIndex = -1;
             AddListeners(); 
             
         }
@@ -48,6 +48,24 @@ namespace Battle
             NetworkManager.Instance.Agent.Handle.AddListener(Handle_C2C_Talk);
         }
 
+        /// <summary>
+        /// 获取本机玩家序号
+        /// </summary>
+        /// <returns></returns>
+        public int GetSelfIndex()
+        {
+            return m_selfIndex;
+        }
+
+        /// <summary>
+        /// 获取对手玩家序号
+        /// </summary>
+        /// <returns></returns>
+        public int GetOpponentID()
+        {
+            return 1 - m_selfIndex;
+        }
+
         public PlayerModel GetPlayerModel(int index)
         {
             return m_playerModels[index];
@@ -55,7 +73,7 @@ namespace Battle
 
         public void Handle_S2C_Response_LinkRoom(S2C_Response_LinkRoom value)
         {
-            SelfIndex = value.id;
+            m_selfIndex = value.id;
         }
 
         public void Handle_S2C_RoomState(S2C_RoomState value)
